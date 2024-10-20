@@ -1,0 +1,130 @@
+.side_watchlist {
+  height: 92vh;
+  display: flex;
+}
+
+.sidebar {
+  padding: 2%;
+  border-right: 1px solid #ddd9d9;
+  flex-basis: 30%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.watchList {
+  padding: 2%;
+  flex-basis: 68%;
+}
+
+.search_container {
+  width: 45%;
+  padding: 5px 10px;
+  border: 2px solid #c0c0c0;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search_container input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.watchlists {
+  margin: 0;
+  color: #f33f40;
+  font-size: 35px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.input-serach-group,
+.input-serach-group > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-serach-group {
+  padding: 30px 0 0;
+}
+
+.input-serach-group > div {
+  padding: 8px 10px;
+  border: 2px solid #c0c0c0;
+  border-radius: 5px;
+}
+
+.input-serach-group input {
+  border: none;
+  outline: none;
+}
+
+.welcome_to_watchlist {
+    padding: 2%;
+    border: 2px solid #a65758;
+    border-radius: 5px;
+}
+
+.welcome_to_watchlist > h3,
+.welcome_to_watchlist > p {
+  margin: 0;
+}
+
+.welcome_to_watchlist > h3 {
+    padding-bottom: 20px;
+    font-size: 25px;
+    font-weight:500;
+    letter-spacing: 1px;
+}
+
+.welcome_to_watchlist > p {
+    line-height: 22px;
+}
+
+.welcome_to_watchlist > h3 > span {
+    color: #a65758;
+    text-transform: capitalize;
+}
+
+.watchListText {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie_search {
+    padding: 6% 0 3%;
+    display: flex;
+    align-items: center;
+}
+
+.movie_search>button {
+    padding: 1%;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: #f33f40;
+    border: 1px solid #f33f40;
+    color: #fff;
+}
+
+.movie_search>div {
+    width: 100%;
+    padding: 1%;
+    border: 1px solid #aaaaaa;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie_search>div>input {
+    width: 100%;
+    border: none;
+    outline: none;
+}

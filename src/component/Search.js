@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import "../assets/css/search.css";
 
 const Search = () => {
-  return (
-    <div>
-      Search
-    </div>
-  )
-}
+  const [search, setSearch] = useState("");
 
-export default Search
+  const handleOnChange = (e) => setSearch(e.target.value);
+
+  return (
+    <div className="search">
+      <div className="search_container">
+        <input
+          name="search"
+          id="search"
+          value={search}
+          onChange={handleOnChange}
+          placeholder="search your movie"
+        />
+        <FaSearch />
+      </div>
+    </div>
+  );
+};
+
+export default Search;

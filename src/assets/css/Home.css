@@ -5,7 +5,6 @@
 
 .sidebar {
   padding: 2%;
-  border-right: 1px solid #ddd9d9;
   flex-basis: 30%;
   display: flex;
   justify-content: space-between;
@@ -14,7 +13,9 @@
 
 .watchList {
   padding: 2%;
+  border-left: 1px solid #ddd9d9;
   flex-basis: 68%;
+  overflow-y: scroll;
 }
 
 .search_container {
@@ -65,10 +66,69 @@
   outline: none;
 }
 
+.sideBar-home-Btn,
+.sideBar-home-Btn > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sideBar-home-Btn {
+  padding: 30px 0 0;
+}
+
+.HomeBtn {
+  background: #f33f40;
+  border-radius: 4px;
+  border: none;
+  font-size: 15px;
+  padding: 8px 80px;
+  color: #fccdd2;
+}
+
+.guest {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 30px;
+  height: 50px;
+  width: 100%;
+}
+
+.horizontal-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  background-color: #333;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  top: 89%;
+  left: 15%;
+  z-index: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.menu-btn {
+  padding: 8px 12px;
+  border: none;
+  background-color: #555;
+  color: #fff;
+  border-radius: 4px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.menu-btn:hover {
+  background-color: #777;
+}
+
 .welcome_to_watchlist {
-    padding: 2%;
-    border: 2px solid #a65758;
-    border-radius: 5px;
+  padding: 2%;
+  border: 2px solid #a65758;
+  border-radius: 5px;
 }
 
 .welcome_to_watchlist > h3,
@@ -77,19 +137,19 @@
 }
 
 .welcome_to_watchlist > h3 {
-    padding-bottom: 20px;
-    font-size: 25px;
-    font-weight:500;
-    letter-spacing: 1px;
+  padding-bottom: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
 .welcome_to_watchlist > p {
-    line-height: 22px;
+  line-height: 22px;
 }
 
 .welcome_to_watchlist > h3 > span {
-    color: #a65758;
-    text-transform: capitalize;
+  color: #a65758;
+  text-transform: capitalize;
 }
 
 .watchListText {
@@ -98,33 +158,230 @@
 }
 
 .movie_search {
-    padding: 6% 0 3%;
-    display: flex;
-    align-items: center;
+  padding: 6% 0 3%;
+  display: flex;
+  align-items: center;
 }
 
-.movie_search>button {
-    padding: 1%;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-    background: #f33f40;
-    border: 1px solid #f33f40;
-    color: #fff;
+.movie_search > button {
+  padding: 1%;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background: #f33f40;
+  border: 1px solid #f33f40;
+  color: #fff;
 }
 
-.movie_search>div {
+.movie_search > div {
+  width: 100%;
+  padding: 1%;
+  border: 1px solid #aaaaaa;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie_search > div > input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.cartItemData {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.cartItemData li {
+  padding: 10px 1%;
+  margin: 0 2% 25px 0;
+  flex-basis: 21.5%;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  transition: 0.5s ease-in-out;
+}
+
+.cartItemData li:nth-child(4n) {
+  margin-right: 0;
+}
+
+.cartItemData div h3 {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.cartItemData li h4 {
+  color: #4682b4;
+}
+
+.cartItemData li h4,
+.cartItemData li span,
+.cartItemData li h6 {
+  font-weight: 600;
+}
+
+.cartItemData li span {
+  color: #f00;
+}
+
+.cartItemData li h5 {
+  margin: 2% 0;
+  position: relative;
+  font-weight: 700;
+}
+
+.cartItemData li h5::before {
+  content: "\f005";
+  position: absolute;
+  right: 25%;
+  color: #f4a460;
+  font-family: "fontawesome";
+}
+
+.cartItemData li figure {
+  margin: 20px 0;
+}
+
+.cartItemData li img {
+  max-width: 200px;
+  max-height: 250px;
+}
+
+/* Tablet Screens */
+@media (max-width: 768px) {
+  .side_watchlist {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    flex-basis: 40%;
+    order: 1;
+    padding: 15px;
+    border-bottom: 1px solid #ddd9d9;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  .watchList {
+    flex-basis: 100%;
+    order: 2;
+  }
+
+  .search_container {
+    width: 60%;
+    margin-top: 10px;
+  }
+
+  .input-serach-group {
+    padding-top: 15px;
+  }
+
+  .HomeBtn {
+    padding: 8px 40px;
+  }
+
+  .cartItemData li {
+    flex-basis: 45%;
+    margin-bottom: 20px;
+  }
+
+  .horizontal-menu {
+    position: relative;
+    top: 10%;
+    left: 10%;
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 480px) {
+  .side_watchlist {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    order: 1;
+    padding: 15px;
+    border-bottom: 1px solid #ddd9d9;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  .watchList {
+    flex-basis: 100%;
+    order: 2;
+  }
+
+  .search_container {
     width: 100%;
-    padding: 1%;
-    border: 1px solid #aaaaaa;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    margin-top: 10px;
+  }
 
-.movie_search>div>input {
-    width: 100%;
-    border: none;
-    outline: none;
+  .input-serach-group {
+    padding-top: 10px;
+  }
+
+  .HomeBtn {
+    padding: 8px 20px;
+    font-size: 13px;
+  }
+
+  .welcome_to_watchlist {
+    padding: 15px;
+    font-size: 18px;
+  }
+
+  .welcome_to_watchlist > h3 {
+    font-size: 20px;
+  }
+
+  .movie_search {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .movie_search > button {
+    margin-top: 10px;
+    width: 70%;
+    margin-left: 40px;
+  }
+
+  .watchlist_card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .cartItemData li {
+    flex-basis: 100%;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .cartItemData li img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .cartItemData li h3 {
+    font-size: 16px;
+  }
+
+  .cartItemData li h4 {
+    font-size: 14px;
+  }
+
+  .cartItemData li h5 {
+    font-size: 16px;
+  }
 }

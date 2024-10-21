@@ -1,13 +1,85 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import DummyImage from "../assets/image/images.jpeg"
 import { MdOutlineBookmarkAdd } from "react-icons/md";
-import { FaSmile } from "react-icons/fa";
 
 const WatchList = () => {
   const [search, setSearch] = useState("");
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+
+  // Debounce function
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return (...args) => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
 
   const handleOnSearch = (e) => setSearch(e.target.value);
+
+  const fetchMovies = useCallback(async (searchTerm) => {
+    if (!searchTerm.trim()) {
+      setMovies([]);
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await fetch(
+        `http://www.omdbapi.com/?s=${searchTerm}&apikey=5b87bc76`
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch movies");
+      }
+
+      const data = await response.json();
+      
+      if (data.Search && Array.isArray(data.Search)) {
+        setMovies(data.Search);
+      } else {
+        setMovies([]);
+        setError(data.Error || "No movies found");
+      }
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+      setError(error.message);
+      setMovies([]);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  // Debounced search function for input changes
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  // Effect for input debouncing
+  useEffect(() => {
+    fetchMovies(debouncedSearch);
+  }, [debouncedSearch, fetchMovies]);
+
+  // Debounced search button handler
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncedButtonSearch = useCallback(
+    debounce(() => {
+      fetchMovies(search);
+    }, 500),
+    [search, fetchMovies]
+  );
 
   return (
     <div className="watchList">
@@ -38,22 +110,46 @@ const WatchList = () => {
             placeholder="Search your movie"
           />
         </div>
-        <button>search</button>
+        <button 
+          onClick={debouncedButtonSearch}
+          disabled={loading}
+          style={{cursor : "pointer"}}
+        >
+          {loading ? "Searching..." : "Search"}
+        </button>
       </div>
 
       <div className="watchlist_card">
-        <div className="card">
-          <img src={DummyImage} />
-
-          <h4><FaSmile /></h4>
-
-          <div>
-            <p>top gun: </p>
-            <p>maverick</p>
-            <p>{"(2022)"}</p>
-          </div>
-        </div>
-
+        {loading ? (
+          <div>Loading...</div>
+        ) : error ? (
+          <div>{error}</div>
+        ) : (
+          <ul className="cartItemData">
+            {movies.map((movie) => (
+              <li key={movie.imdbID} className="item">
+                <figure>
+                  <img 
+                    src={movie.Poster !== "N/A" ? movie.Poster : '/placeholder.jpg'} 
+                    alt={movie.Title} 
+                  />
+                </figure>
+                <div className="details">
+                  <h3>{movie.Title}</h3>
+                  <div className="movie-info">
+                    <span>{movie.Year}</span>
+                    <button 
+                      className="bookmark-btn"
+                      onClick={() => {/* Add to watchlist logic */}}
+                    >
+                      <MdOutlineBookmarkAdd />
+                    </button>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

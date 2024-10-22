@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 
-const WatchList = () => {
+const WatchList = ({onAddToWatchList}) => {
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -81,6 +81,8 @@ const WatchList = () => {
     [search, fetchMovies]
   );
 
+  const handleAddWatchList = (movie) => onAddToWatchList(movie);
+
   return (
     <div className="watchList">
       <div className="welcome_to_watchlist">
@@ -133,17 +135,16 @@ const WatchList = () => {
                     src={movie.Poster !== "N/A" ? movie.Poster : '/placeholder.jpg'} 
                     alt={movie.Title} 
                   />
+
+                  <div className="addWatchList" onClick={() => handleAddWatchList(movie)}>
+                  <MdOutlineBookmarkAdd />
+                  </div>
+
                 </figure>
                 <div className="details">
                   <h3>{movie.Title}</h3>
                   <div className="movie-info">
                     <span>{movie.Year}</span>
-                    <button 
-                      className="bookmark-btn"
-                      onClick={() => {/* Add to watchlist logic */}}
-                    >
-                      <MdOutlineBookmarkAdd />
-                    </button>
                   </div>
                 </div>
               </li>

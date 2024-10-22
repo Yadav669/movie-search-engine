@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { IoHomeOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
-import { BiDotsHorizontalRounded } from "react-icons/bi";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { MdDelete } from "react-icons/md";
 
-const SideBar = () => {
+const SideBar = ({ MyList, onRemove }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [sidebarSearch, setSidebarSearch] = useState("");
 
@@ -14,10 +15,11 @@ const SideBar = () => {
     setShowMenu(!showMenu);
   };
 
-  const handleMenuClick = () => {
-    // Hide the menu and bring back the three-dot icon when clicking login or logout
-    setShowMenu(false);
-  };
+  const handleMenuClick = () => setShowMenu(false);
+
+  const filteredList = MyList?.filter(movie => 
+    movie.Title.toLowerCase().includes(sidebarSearch.toLowerCase())
+  );
 
   return (
     <div className="sidebar">
@@ -47,6 +49,25 @@ const SideBar = () => {
             </button>
           </div>
         </div>
+
+        <div className="myWatchList">
+          <h3>my lists</h3>
+
+          <ul>
+          {filteredList?.map((movie) => (
+              <li key={movie?.imdbID} className="watchlist-item">
+                <span className="movie-title">{movie.Title}</span>
+                <button 
+                  className="remove-btn"
+                  onClick={() => onRemove(movie.imdbID)}
+                  aria-label="Remove from watchlist"
+                >
+                  <MdDelete />
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       <div className="guest">
@@ -57,7 +78,7 @@ const SideBar = () => {
         </div>
         <div className="dot">
           {showMenu ? (
-            <div className="horizontal-menu" style={{ display: 'flex' }}>
+            <div className="horizontal-menu" style={{ display: "flex" }}>
               <button className="menu-btn" onClick={handleMenuClick}>
                 Login
               </button>
@@ -66,7 +87,7 @@ const SideBar = () => {
               </button>
             </div>
           ) : (
-            <BiDotsHorizontalRounded onClick={toggleMenu} />
+            <BsThreeDotsVertical onClick={toggleMenu} />
           )}
         </div>
       </div>

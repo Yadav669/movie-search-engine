@@ -89,7 +89,9 @@
 
 .myWatchList > h3 {
   font-size: 22px;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
+  margin-right: 30%;
+  margin-top: 5%;
 }
 
 .myWatchList > ul {

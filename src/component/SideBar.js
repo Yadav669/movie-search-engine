@@ -51,7 +51,7 @@ const SideBar = ({ MyList, onRemove }) => {
         </div>
 
         <div className="myWatchList">
-          <h3>my lists</h3>
+          <h3>My Lists</h3>
 
           <ul>
           {filteredList?.map((movie) => (

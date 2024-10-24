@@ -1,23 +1,39 @@
 import React, { useState } from "react";
-import { FaSearch } from "react-icons/fa";
-import "../assets/css/search.css";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { RiLogoutBoxLine } from "react-icons/ri";
+import "../assets/css/search.css"
 
 const Search = () => {
-  const [search, setSearch] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
-  const handleOnChange = (e) => setSearch(e.target.value);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const handleLogout = () => {
+    // Logic for logout, if any
+    localStorage.removeItem("userEmail"); // Remove user email from local storage
+    navigate("/"); // Redirect to the login page
+  };
 
   return (
-    <div className="search">
-      <div className="search_container">
-        <input
-          name="search"
-          id="search"
-          value={search}
-          onChange={handleOnChange}
-          placeholder="search your movie"
-        />
-        <FaSearch />
+    <div className="navbar">
+      <div className="logo">
+        <h2>Master Movies</h2>
+      </div>
+      <div className={`Pages ${menuOpen ? "show" : ""}`}>
+        <ul>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li className="Logout" onClick={handleLogout}>
+            <RiLogoutBoxLine size={20} />
+          </li>
+        </ul>
+      </div>
+      <div className="menu-toggle" onClick={toggleMenu}>
+        ☰
       </div>
     </div>
   );

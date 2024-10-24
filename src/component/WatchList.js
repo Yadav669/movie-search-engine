@@ -87,7 +87,7 @@ const WatchList = ({onAddToWatchList}) => {
     <div className="watchList">
       <div className="welcome_to_watchlist">
         <h3>
-          Welcome to <span>watchlists</span>
+          Welcome to <span>Movie Search Engine</span>
         </h3>
 
         <p className="watchListText">
@@ -146,6 +146,7 @@ const WatchList = ({onAddToWatchList}) => {
                   <div className="movie-info">
                     <span>{movie.Year}</span>
                   </div>
+                  <div><h4>{ movie.Plot}</h4></div>
                 </div>
               </li>
             ))}

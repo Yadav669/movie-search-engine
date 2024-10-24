@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Search from "../component/Search";
-import SideBar from "../component/SideBar";
-import WatchList from "../component/WatchList";
+import Search from "./Search";
+import SideBar from "./SideBar";
+import WatchList from "./WatchList";
 import "../assets/css/Home.css";
 
 const Home = () => {

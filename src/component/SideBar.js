@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { IoHomeOutline } from "react-icons/io5";
-import { CgProfile } from "react-icons/cg";
-import { BsThreeDotsVertical } from "react-icons/bs";
+// import { CgProfile } from "react-icons/cg";
+// import { BsThreeDotsVertical } from "react-icons/bs";
 import { MdDelete } from "react-icons/md";
 
 const SideBar = ({ MyList, onRemove }) => {
-  const [showMenu, setShowMenu] = useState(false);
+  // const [showMenu, setShowMenu] = useState(false);
   const [sidebarSearch, setSidebarSearch] = useState("");
 
   const handleOnChange = (e) => setSidebarSearch(e.target.value);
 
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
-  };
+  // const toggleMenu = () => {
+  //   setShowMenu(!showMenu);
+  // };
 
-  const handleMenuClick = () => setShowMenu(false);
+  // const handleMenuClick = () => setShowMenu(false);
 
   const filteredList = MyList?.filter(movie => 
     movie.Title.toLowerCase().includes(sidebarSearch.toLowerCase())
@@ -23,6 +22,7 @@ const SideBar = ({ MyList, onRemove }) => {
 
   return (
     <div className="sidebar">
+
       <div>
         <h2 className="watchlists">Watchlists</h2>
 
@@ -36,17 +36,6 @@ const SideBar = ({ MyList, onRemove }) => {
               onChange={handleOnChange}
               placeholder="Search"
             />
-          </div>
-        </div>
-
-        <div className="sideBar-home-Btn">
-          <div>
-            <button className="HomeBtn">
-              <span>
-                <IoHomeOutline />
-              </span>
-              Home
-            </button>
           </div>
         </div>
 
@@ -70,7 +59,7 @@ const SideBar = ({ MyList, onRemove }) => {
         </div>
       </div>
 
-      <div className="guest">
+      {/* <div className="guest">
         <div className="pro">
           <span>
             <CgProfile />
@@ -90,7 +79,7 @@ const SideBar = ({ MyList, onRemove }) => {
             <BsThreeDotsVertical onClick={toggleMenu} />
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

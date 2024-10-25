@@ -34,7 +34,7 @@ const SideBar = ({ MyList, onRemove }) => {
               id="sidebar_search"
               value={sidebarSearch}
               onChange={handleOnChange}
-              placeholder="Search"
+              placeholder="WatchList Search"
             />
           </div>
         </div>

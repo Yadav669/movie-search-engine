@@ -4,7 +4,7 @@
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  background-color: #f0f0f0; /* Light gray background */
+  background-color: #f0f0f0;
 }
 
 .login-box {
@@ -12,7 +12,7 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 300px; /* Fixed width for the login box */
+  width: 300px; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,7 +36,7 @@ h2 {
 .login-button {
   width: 40%;
   padding: 10px;
-  background-color: #007bff; /* Bootstrap primary color */
+  background-color: #365a80; 
   color: white;
   border: none;
   border-radius: 4px;
@@ -44,7 +44,7 @@ h2 {
 }
 
 .login-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #496e95; 
 }
 
 .logout-box {

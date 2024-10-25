@@ -5,7 +5,7 @@ import "../assets/css/search.css"
 
 const Search = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -13,8 +13,8 @@ const Search = () => {
 
   const handleLogout = () => {
     // Logic for logout, if any
-    localStorage.removeItem("userEmail"); // Remove user email from local storage
-    navigate("/"); // Redirect to the login page
+    localStorage.removeItem("userEmail"); 
+    navigate("/"); 
   };
 
   return (

@@ -7,7 +7,6 @@
   padding: 2%;
   flex-basis: 30%;
   display: flex;
-  /* justify-content: space-between; */
   flex-direction: column;
 }
 
@@ -25,8 +24,6 @@
   border-radius: 20px;
   display: flex;
 } */
-
-
 
 .watchlists {
   margin: 0;
@@ -128,7 +125,7 @@
 .menu-btn:hover {
   background-color: #777;
 }
-
+/* ---------------------------------WatchList--------------------------------- */
 .welcome_to_watchlist {
   padding: 2%;
   border: 2px solid #a65758;
@@ -192,6 +189,7 @@
   border: none;
   outline: none;
 }
+/* -------------------------------------CartData------------------------------- */
 
 .cartItemData {
   display: flex;
@@ -218,7 +216,6 @@
   left: 0;
   background-color: #ddd9d9;
 }
-
 .cartItemData li:nth-child(4n) {
   margin-right: 0;
 }
@@ -271,7 +268,7 @@
   flex-basis: 0%;
 }
 
-/* Tablet Screens */
+/* ------------------------------Tablet---------------------------------- */
 @media (max-width: 767px) {
   .side_watchlist {
     flex-direction: column;
@@ -313,8 +310,7 @@
     left: 10%;
   }
 }
-
-/* Mobile Screens */
+/* ---------------------------------For Mobile-------------------------- */
 @media (max-width: 480px) {
   .side_watchlist {
     flex-direction: column;

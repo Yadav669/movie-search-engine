@@ -34,7 +34,7 @@ const WatchList = ({onAddToWatchList}) => {
       setLoading(true);
       setError(null);
       const response = await fetch(
-        `http://www.omdbapi.com/?s=${searchTerm}&apikey=5b87bc76`
+        `https://www.omdbapi.com/?s=${searchTerm}&apikey=5b87bc76`
       );
 
       if (!response.ok) {

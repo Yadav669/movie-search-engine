@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./Login"; // Correct path without "components"
-import Home from "./Home";   // Correct path without "components"
-import Search from "./Search"; // Correct path without "components"
-import "./../assets/css/index.css"; // Correct path for CSS
+import Login from "./Login"; 
+import Home from "./Home";  
+import Search from "./Search";
+import "./../assets/css/index.css"; 
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} /> {/* Updated path to lowercase */}
+        <Route path="/" element={<Login />} /> 
         <Route path="/home" element={<Home />} />
         <Route path="/Search" element={<Search />} />
       </Routes>

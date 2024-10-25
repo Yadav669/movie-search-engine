@@ -13,17 +13,17 @@ const Login = () => {
 
   const handleLogin = () => {
     if (email) {
-      localStorage.setItem("userEmail", email); // Store email in localStorage
-      const userWatchlist = localStorage.getItem(email) || JSON.stringify([]); // Get existing watchlist or an empty array
-      localStorage.setItem("watchlist", userWatchlist); // Set user's watchlist
+      localStorage.setItem("userEmail", email); 
+      const userWatchlist = localStorage.getItem(email) || JSON.stringify([]); 
+      localStorage.setItem("watchlist", userWatchlist);
       setLoggedIn(true);
-      navigate("/home"); // Redirect to home page after login
+      navigate("/home"); 
     }
   };
 
   const handleLogout = () => {
     localStorage.removeItem("userEmail");
-    localStorage.removeItem("watchlist"); // Optional: Clear watchlist on logout
+    localStorage.removeItem("watchlist"); 
     setLoggedIn(false);
   };
 
